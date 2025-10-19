@@ -2,7 +2,7 @@
 agentName: create-adr
 description: ADR (Architecture Decision Record) を対話的に作成するサブエージェント
 globs:
-  - "docs/adr/*.md"
+  - "docs/adr/**/*.md"
   - "docs/templates/adr/*.md"
   - "docs/how-to-write-adr.md"
 ---
