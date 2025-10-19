@@ -65,6 +65,21 @@ docs/2-workflow
 
 ## issueベースの開発フロー
 
+### 全体の流れ
+
+```mermaid
+flowchart TB
+    start([開始]) --> issue[1. GitHub issueを作成]
+    issue --> branch[2. mainからブランチ作成<br/>type/番号]
+    branch --> work[3. 作業とコミット<br/>コミット規約に従う]
+    work --> push[4. リモートにpush]
+    push --> pr[5. Pull Request作成<br/>Closes #番号を記載]
+    pr --> review[6. レビュー<br/>自動/手動]
+    review --> merge[7. mainにマージ<br/>Squash and merge]
+    merge --> delete[8. ブランチ削除]
+    delete --> done([完了])
+```
+
 ### 1. issueの作成
 
 GitHub issueで作業内容を定義します。
