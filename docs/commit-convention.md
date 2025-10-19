@@ -26,7 +26,7 @@
 
 | 絵文字 | Type | 説明 | 例 |
 |--------|------|------|-----|
-| ✨ | `feat` | 新機能の追加 | ✨ feat: 体重データ登録APIを追加 |
+| ✨ | `feature` | 新機能の追加 | ✨ feature: 体重データ登録APIを追加 |
 | 🐛 | `fix` | バグ修正 | 🐛 fix: 体重データの小数点以下が保存されない問題を修正 |
 | 📝 | `docs` | ドキュメントのみの変更 | 📝 docs: アーキテクチャ図を更新 |
 | 💄 | `style` | コードの動作に影響しない変更（フォーマット、セミコロン等） | 💄 style: Kotlinコードをフォーマット |
@@ -74,7 +74,7 @@
 ### 良い例
 
 ```
-✨ feat: 体重データ登録APIを追加
+✨ feature: 体重データ登録APIを追加
 
 POST /api/weight-logs エンドポイントを実装。
 バリデーション、リポジトリ層、サービス層を含む。
@@ -96,7 +96,7 @@ update code
 （何を変更したか不明、絵文字・typeがない）
 
 ```
-✨ feat: 体重データ登録APIを追加、テストを追加、ドキュメントを更新、リファクタリング
+✨ feature: 体重データ登録APIを追加、テストを追加、ドキュメントを更新、リファクタリング
 ```
 （複数の変更を1コミットにまとめすぎ）
 
@@ -117,7 +117,7 @@ update code
 ### Revert
 
 ```
-⏪ revert: feat: 体重データ登録APIを追加
+⏪ revert: feature: 体重データ登録APIを追加
 
 This reverts commit abc123def456.
 
@@ -199,8 +199,18 @@ EOF
 - [Angular Commit Message Guidelines](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#commit)
 - [gitmoji](https://gitmoji.dev/) - Git commit emoji guide
 
+## ブランチ命名規則との統一
+
+このコミット規約は、ブランチ命名規則とも統一されています。
+
+- ブランチ名: `feature/1`, `fix/5`, `docs/2`
+- コミットメッセージ: `✨ feature:`, `🐛 fix:`, `📝 docs:`
+
+詳細は [docs/git-workflow.md](git-workflow.md) を参照してください。
+
 ## 変更履歴
 
 | 日付 | 変更内容 |
 |------|---------|
 | 2025-10-19 | 初版作成 |
+| 2025-10-19 | `feat` を `feature` に変更（ブランチ命名規則と統一） |

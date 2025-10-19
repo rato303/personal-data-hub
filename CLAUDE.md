@@ -33,6 +33,11 @@
    - 要件定義 → 設計 → 実装 → テストの流れ
    - ドキュメントテンプレートへのリンク
 
+4. **[docs/git-workflow.md](docs/git-workflow.md)** - Gitワークフロー
+   - ブランチ命名規則（`feature/1`, `fix/5`等）
+   - issueベースの開発フロー
+   - PRの作成とマージ手順
+
 ### 設計判断の記録（ADR）
 
 **場所**: [docs/adr/](docs/adr/)
@@ -85,6 +90,14 @@
 2. 新しい判断の場合、ADRドラフトを作成
 3. ADRのステータスは「提案中」で開始
 4. レビュー後、「承認済み」に更新
+
+### issueベースで開発する場合
+
+1. **必ず [docs/git-workflow.md](docs/git-workflow.md) を参照**
+2. issueを確認してブランチを作成（`<type>/<issue番号>`）
+3. 作業完了後、PRを作成
+4. PR descriptionに `Closes #<issue番号>` を記載
+5. マージ後、ブランチを削除
 
 ### コミットを作成する場合
 

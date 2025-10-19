@@ -40,8 +40,13 @@ jobs:
           additional_permissions: |
             actions: read
 
-          # Optional: Give a custom prompt to Claude. If this is not specified, Claude will perform the instructions specified in the comment that tagged it.
-          # prompt: 'Update the pull request description to include a summary of changes.'
+          # プロンプトの前に日本語での応答を指示
+          prompt: |
+            **必ず日本語で応答してください。**
+
+            リポジトリのCLAUDE.mdとdocs/配下のドキュメントを参照して、プロジェクトの規約とスタイルに従ってください。
+
+            ユーザーから指示された内容を実行してください。
 
           # Optional: Add claude_args to customize behavior and configuration
           # See https://github.com/anthropics/claude-code-action/blob/main/docs/usage.md
