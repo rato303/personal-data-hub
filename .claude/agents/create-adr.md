@@ -19,17 +19,46 @@ globs:
 
 ## 作業手順
 
-### 1. 既存ADRの確認
+### 1. 既存ADRの確認と採番
 
 まず、既存のADRを確認して次の番号を決定します。
 
 ```bash
-ls docs/adr/
+# 有効なADRを確認
+ls docs/adr/*.md 2>/dev/null || echo "ADRが存在しません"
+
+# 置換されたADRも確認（存在する場合）
+ls docs/adr/superseded/*.md 2>/dev/null || echo "supersededディレクトリなし"
 ```
 
-- 最新のADR番号を確認
-- 次の番号（ゼロパディング3桁）を決定
-- 例: 008が最新 → 次は009
+#### 採番ロジック
+
+- **有効なADR**と**置換されたADR**の両方から最大番号を取得
+- 次の番号 = 最大番号 + 1（ゼロパディング3桁）
+- ADRが1つもない場合は001から開始
+
+#### 採番例
+
+**例1**: 通常ケース
+```
+docs/adr/: 001, 002, 008
+superseded/: 003
+→ 最大番号 = 008, 次は 009
+```
+
+**例2**: supersededに最新番号がある場合
+```
+docs/adr/: 001, 002
+superseded/: 003
+→ 最大番号 = 003, 次は 004（衝突回避）
+```
+
+**例3**: ADRが存在しない場合
+```
+docs/adr/: (空)
+superseded/: (なし)
+→ 次は 001
+```
 
 ### 2. ユーザーからの情報収集
 
@@ -154,12 +183,17 @@ ADRのフォーマット：
 
 もしこのADRが既存のADRを置換する場合：
 
-1. **古いADRを移動**
+1. **supersededディレクトリの作成（存在しない場合）**
+   ```bash
+   mkdir -p docs/adr/superseded
+   ```
+
+2. **古いADRを移動**
    ```bash
    git mv docs/adr/XXX-old-title.md docs/adr/superseded/XXX-old-title.md
    ```
 
-2. **ユーザーに確認**
+3. **ユーザーに確認**
    - 移動したADRを確認してもらう
    - 他のドキュメントから古いADRへのリンクがあれば、新しいADRに更新する必要があることを伝える
 
