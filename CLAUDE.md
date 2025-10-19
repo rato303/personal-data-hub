@@ -67,6 +67,9 @@
 - [design/workflow-spec-template.md](docs/templates/design/workflow-spec-template.md)
 - [design/usecase-index-template.md](docs/templates/design/usecase-index-template.md)
 
+#### ADR用
+- [adr/adr-template.md](docs/templates/adr/adr-template.md)
+
 ## 技術スタック
 
 **概要**: Kotlin/Spring Boot（バックエンド）+ React/TypeScript（フロントエンド）+ PostgreSQL（DB）+ AWS（インフラ）
@@ -86,10 +89,11 @@
 
 ### 技術選定や設計判断をする場合
 
-1. 既存のADRを確認（同様の判断がないか）
-2. 新しい判断の場合、ADRドラフトを作成
-3. ADRのステータスは「提案中」で開始
-4. レビュー後、「承認済み」に更新
+1. **必ず [docs/how-to-write-adr.md](docs/how-to-write-adr.md) を参照**
+2. 既存のADR（`docs/adr/`）を確認（同様の判断がないか）
+3. 新しい判断の場合、テンプレート（[docs/templates/adr/adr-template.md](docs/templates/adr/adr-template.md)）からADRを作成
+4. ADRは作成後、内容を変更しない（不変）
+5. 決定を変更する場合は、新しいADRを作成し、古いADRを `docs/adr/superseded/` に移動
 
 ### issueベースで開発する場合
 
